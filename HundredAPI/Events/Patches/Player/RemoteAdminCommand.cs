@@ -9,6 +9,7 @@ public class RemoteAdminCommandEvent
 {
     private static bool Prefix(string q, CommandSender sender)
     {
+        [HarmonyPrefix]
         RACommandEventArgs ev = new(Exiled.API.Features.Player.Get(sender), q);
         Handlers.Player.OnExecutedRACommand(ev);
         return ev.IsAllowed;
