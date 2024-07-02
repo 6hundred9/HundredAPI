@@ -7,9 +7,9 @@ namespace HundredAPI.Events.Patches.Player;
 [HarmonyPatch(typeof(CommandProcessor), nameof(CommandProcessor.ProcessQuery))]
 public class RemoteAdminCommandEvent
 {
+    [HarmonyPrefix]
     private static bool Prefix(string q, CommandSender sender)
     {
-        [HarmonyPrefix]
         RACommandEventArgs ev = new(Exiled.API.Features.Player.Get(sender), q);
         Handlers.Player.OnExecutedRACommand(ev);
         return ev.IsAllowed;
