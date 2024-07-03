@@ -449,6 +449,9 @@
     </ItemGroup>
     <ItemGroup>
         <Compile Include="Config.cs" />
+        <Compile Include="DataStoring\Read.cs" />
+        <Compile Include="DataStoring\SerializeAndDeserialize.cs" />
+        <Compile Include="DataStoring\Write.cs" />
         <Compile Include="Events\EventArgs\Map\PlacedBloodEventArgs.cs" />
         <Compile Include="Events\EventArgs\Map\PlacedBulletHoleEventArgs.cs" />
         <Compile Include="Events\EventArgs\Player\RACommandEventArgs.cs" />
