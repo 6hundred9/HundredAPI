@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
+using JetBrains.Annotations;
 using YamlDotNet.Serialization;
 
 namespace HundredAPI.DataStoring;
@@ -20,13 +21,17 @@ public class Read
         Directory.CreateDirectory(Path);
     }
 
-    private List<object> ReadFile(string pluginName)
+    private List<object> ReadFile([CanBeNull] string pluginName)
     {
         string pluginPath = System.IO.Path.Combine(Path, $"{pluginName}.yml");
         Assembly PluginUsing = Assembly.GetCallingAssembly();
+        if (Plugins.PluginNames.ContainsKey(PluginUsing.FullName))
+        {
+            pluginPath = System.IO.Path.Combine(Path, $"{Plugins.PluginNames[PluginUsing.FullName]}.yml");
+        }
         if (!File.Exists(pluginPath))
         {
-            throw new IOException($"pluginName {pluginName} does not exist!\nError triggered by {PluginUsing.Location}");
+            throw new IOException($"pluginName {pluginName} does not exist!\nError triggered by {PluginUsing.FullName}");
         }
 
         try

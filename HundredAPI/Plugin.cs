@@ -11,7 +11,7 @@ namespace HundredAPI
         public override string Author { get; } = "6hundred9";
         public override string Name { get; } = "HundredAPI";
         public override string Prefix { get; } = "hAPI";
-        public override Version Version { get; } = new(1, 1, 0);
+        public override Version Version { get; } = new(1, 1, 1);
         public override Version RequiredExiledVersion { get; } = new(8,9,6);
         public override bool IgnoreRequiredVersionCheck { get; } = true;
 
