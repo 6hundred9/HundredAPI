@@ -11,5 +11,7 @@ public class Plugins
     {
         Assembly PluginUsing = Assembly.GetCallingAssembly();
         PluginNames.Add(PluginUsing.FullName, pluginName);
+        new Write().CreatePluginData("HundredAPI");
+        new Write().WritePluginData("HundredAPI", PluginNames);
     }
 }

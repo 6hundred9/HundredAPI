@@ -23,6 +23,7 @@ public class Write
     /// Creates a folder to contain plugin data across rounds
     /// </summary>
     /// <param name="pluginName">Name of the plugin (THIS CANNOT BE THE SAME AS OTHER PLUGINS)</param>
+    /// <exception cref="IOException">File with the same plugin name exists</exception>
     public void CreatePluginData([CanBeNull] string pluginName)
     {
         string pluginPath = System.IO.Path.Combine(Path, $"{pluginName}.yml");
@@ -39,11 +40,13 @@ public class Write
         File.Create(pluginPath);
     }
     /// <summary>
-    /// 
+    /// Write the data you want into the plugin data file (this will overwrite the already existing contents of the fiel)
     /// </summary>
-    /// <param name="pluginName">Name of the plugin</param>
-    /// <param name="contents"></param>
-    public void WritePluginData([CanBeNull] string pluginName, List<object> contents)
+    /// <param name="pluginName">Plugin name</param>
+    /// <param name="contents">The contents written into the plugin storage</param>
+    /// <typeparam name="T">Type of contents</typeparam>
+    /// <exception cref="IOException">File with the same plugin name exists</exception>
+    public void WritePluginData<T>([CanBeNull] string pluginName, T contents)
     {
         Assembly PluginUsing = Assembly.GetCallingAssembly();
         string pluginPath = System.IO.Path.Combine(Path, $"{pluginName}.yml");

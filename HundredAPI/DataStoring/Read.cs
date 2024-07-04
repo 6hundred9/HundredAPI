@@ -21,7 +21,7 @@ public class Read
         Directory.CreateDirectory(Path);
     }
 
-    private List<object> ReadFile([CanBeNull] string pluginName)
+    public List<object> ReadFile([CanBeNull] string pluginName)
     {
         string pluginPath = System.IO.Path.Combine(Path, $"{pluginName}.yml");
         Assembly PluginUsing = Assembly.GetCallingAssembly();
